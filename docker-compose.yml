@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  activemq:
+    image: synapticiel/activemq:5.16.0
+    container_name: activemq-5.16.0
+    ports:
+      # mqtt
+      - "1883:1883"
+      # amqp
+      - "5672:5672"
+      # ui
+      - "8161:8161"
+      # stomp
+      - "61613:61613"
+      # ws
+      - "61614:61614"
+      # jms/openwire
+      - "61616:61616"
+    volumes: ["/opt/synapticiel/active-mq/data:/opt/apache-activemq/data", "/opt/synapticiel/active-mq/conf:/opt/apache-activemq/conf"]
+    network_mode: "host"
+
+volumes:
+  activemq:
+    driver: local
