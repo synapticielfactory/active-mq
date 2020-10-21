@@ -17,8 +17,7 @@ Docker image with ActiveMQ  on CentOS Linux.
 # Volumes
 
 * /opt/apache-activemq/conf - Directory holding ActiveMQ configuration files.
-* /opt/apache-activemq/data - Data directory. Will contain KahaDB data. Will not contain logs.
-* /opt/apache-activemq/logs - Logs directory. In the default configuration, this directory will contain the ActiveMQ and audit log files.
+* /opt/apache-activemq/data - Data and Logs directory. Will contain KahaDB data and audit log files
 
 # Ports
 
