@@ -36,7 +36,8 @@ By default logs, data and configuration is stored inside the container and will 
 lost after the container has been shut down and removed. To persist these
 files you can mount these directories to directories on your host system:
 
-docker run --network="host" \
-  -v /opt/synapticiel/active-mq/data:/opt/apache-activemq/data \
-  -v /opt/synapticiel/active-mq/conf:/opt/apache-activemq/conf \
-  synapticiel/activemq:5.16.0
+    docker run --network="host" \
+      -v /opt/synapticiel/active-mq/data:/opt/apache-activemq/data \
+      -v /opt/synapticiel/active-mq/conf:/opt/apache-activemq/conf \
+      synapticiel/activemq:5.16.0
+    
