@@ -21,8 +21,6 @@ ENV DOWNLOAD_URL=http://archive.apache.org/dist/activemq/${VERSION_NUMBER}/apach
 ENV RUN_AS_USER=activemq
 # Configuration directory.
 ENV CONFIGURATION_DIRECTORY=${HOME_DIRECTORY}/conf
-# Logs directory. Does not exist in the default ActiveMQ binary distribution.
-ENV LOGS_DIRECTORY=${HOME_DIRECTORY}/logs
 # Data directory. Will also contain the pid file.
 ENV DATA_DIRECTORY=${HOME_DIRECTORY}/data
 # Create the user and group that will be used to run the software.
@@ -48,13 +46,11 @@ RUN mv ${FINAL_DIRECTORY_NAME}-* ${HOME_DIRECTORY}
 # Create configuration, data and logs directories as needed.
 RUN mkdir -p ${CONFIGURATION_DIRECTORY}
 RUN mkdir -p ${DATA_DIRECTORY}
-RUN mkdir -p ${LOGS_DIRECTORY}
 
 # Set the owner of the configuration, data and logs directories in case they
 # are not located in the home directory or any of its sub-directories.
 RUN chown -R ${RUN_AS_USER}:${RUN_AS_USER} ${CONFIGURATION_DIRECTORY}
 RUN chown -R ${RUN_AS_USER}:${RUN_AS_USER} ${DATA_DIRECTORY}
-RUN chown -R ${RUN_AS_USER}:${RUN_AS_USER} ${LOGS_DIRECTORY}
 
 # Set the owner of all files related to the software to the user which will be used to run it.
 RUN chown -R ${RUN_AS_USER}:${RUN_AS_USER} ${HOME_DIRECTORY}
@@ -81,4 +77,4 @@ EXPOSE 1883
 EXPOSE 61614
 
 # Expose configuration, data and log directories.
-VOLUME ["${CONFIGURATION_DIRECTORY}", "${DATA_DIRECTORY}", "${LOGS_DIRECTORY}"]
+VOLUME ["${CONFIGURATION_DIRECTORY}", "${DATA_DIRECTORY}"]
